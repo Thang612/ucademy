@@ -1,11 +1,13 @@
 import React from "react";
 import { menuItems } from "@/constants";
+import ActiveLink from "../common/ActiveLink";
+import { TMenuItem } from "@/app/types";
 
 const Sidebar = () => {
   return (
     <div className="p-5 border-r border-r-gray-200">
-      <a href="/" className="font-bold text-3xl inline-block mb-5">
-        Ucademy
+      <a href="/" className="text-center font-bold text-3xl block mb-5">
+        <span className="text-primary font-extrabold text-4xl">U</span>cademy
       </a>
       <ul>
         {menuItems.map((item, index) => {
@@ -18,13 +20,13 @@ const Sidebar = () => {
   );
 };
 
-function MenuItem({ url = "/", title = "", icon }: { url: string; title: string, icon: React.ReactNode }) {
+function MenuItem({ url = "/", title = "", icon }: TMenuItem) {
   return (
-    <li className=" flex items-center gap-3 px-4 py-2 rounded-xl hover:text-primary hover:bg-primary hover:bg-opacity-30 transition-all">
-      {icon}
-      <a href={url} className="p-3 rounded-md flex items-center">
+    <li>
+      <ActiveLink url={url} >
+        {icon}
         {title}
-      </a>
+      </ActiveLink>
     </li>
   );
 }
