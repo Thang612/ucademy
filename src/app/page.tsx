@@ -1,7 +1,7 @@
-import { connectToDatabase } from "@/lib/mongoose";
+import connectionToDatabase from "@/lib/mongoose";
 
 export default async function Home() {
-  const connect = connectToDatabase()
+  const connect = connectionToDatabase()
   console.log({ connect })
   return <div>Homepage</div>;
 }
