@@ -1,19 +1,23 @@
-"use client"
-import { TActiveLinkProps } from '@/app/types';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation'
-import React from 'react'
+"use client";
+import { ActiveLinkProps } from "@/types";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const ActiveLink = ({ url = "/", children }: TActiveLinkProps) => {
-    const pathName = usePathname()
-    const isActive = pathName === url
+const ActiveLink = ({ url, children }: ActiveLinkProps) => {
+  const pathname = usePathname();
+  const isActive = url === pathname;
+  return (
+    <Link
+      href={url}
+      className={`p-3 rounded-md flex items-center gap-3  transition-all ${
+        isActive
+          ? "text-white bg-primary svg-animate"
+          : "hover:text-primary hover:bg-primary hover:bg-opacity-10"
+      } `}
+    >
+      {children}
+    </Link>
+  );
+};
 
-    return (
-        <Link href={url} className={`flex gap-3  p-4 rounded-md items-center 
-        ${isActive ? "bg-primary text-white svg-animate" : "hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all"}`}>
-            {children}
-        </Link>
-    )
-}
-
-export default ActiveLink
+export default ActiveLink;

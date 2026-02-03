@@ -1,20 +1,23 @@
-import React from "react";
 import { menuItems } from "@/constants";
+import { TMenuItem } from "@/types";
 import ActiveLink from "../common/ActiveLink";
-import { TMenuItem } from "@/app/types";
 
 const Sidebar = () => {
   return (
-    <div className="p-5 border-r border-r-gray-200">
-      <a href="/" className="text-center font-bold text-3xl block mb-5">
-        <span className="text-primary font-extrabold text-4xl">U</span>cademy
+    <div className="p-5 border-r border-r-gray-200 bg-white">
+      <a href="/" className="font-bold text-3xl inline-block mb-5">
+        <span className="text-primary">U</span>
+        cademy
       </a>
-      <ul>
-        {menuItems.map((item, index) => {
-          return (
-            <MenuItem key={`menu-${index}`} url={item.url} title={item.title} icon={item.icon} ></MenuItem>
-          )
-        })}
+      <ul className="flex flex-col gap-2">
+        {menuItems.map((item, index) => (
+          <MenuItem
+            key={index}
+            url={item.url}
+            title={item.title}
+            icon={item.icon}
+          ></MenuItem>
+        ))}
       </ul>
     </div>
   );
@@ -23,7 +26,7 @@ const Sidebar = () => {
 function MenuItem({ url = "/", title = "", icon }: TMenuItem) {
   return (
     <li>
-      <ActiveLink url={url} >
+      <ActiveLink url={url}>
         {icon}
         {title}
       </ActiveLink>

@@ -1,6 +1,6 @@
 import { ComponentProps } from "react";
 
-const IconExplore = (props: ComponentProps<"svg">) => {
+const IconClock = (props: ComponentProps<"svg">) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,15 +8,16 @@ const IconExplore = (props: ComponentProps<"svg">) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
+      className="w-6 h-6"
       {...props}
     >
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"
+        d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
       />
     </svg>
   );
 };
 
-export default IconExplore;
+export default IconClock;
