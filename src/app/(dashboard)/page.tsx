@@ -1,16 +1,8 @@
 import { CourseGrid } from "@/components/common";
 import CourseItem from "@/components/course/CourseItem";
 import Heading from "@/components/typography/Heading";
-import createUser from "@/lib/actions/user.actions";
 
 const page = async () => {
-  const user = await createUser({
-    clerkId: "clerk_Id_2131",
-    email_address: "df@gmail.com",
-    username: "thang342"
-  })
-
-  console.log({ user })
 
   return (
     <div>
