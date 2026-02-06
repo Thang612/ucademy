@@ -1,6 +1,10 @@
 "use server";
 
 import mongoose from "mongoose";
+import dns from "node:dns/promises";
+
+// Set well-known public DNS servers (Cloudflare and Google)
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 // singleton connection
 let isConnected: boolean = false;
