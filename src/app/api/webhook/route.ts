@@ -7,6 +7,10 @@ export async function POST(req: Request) {
     const svix_id = headers().get("svix-id") ?? "";
     const svix_timestamp = headers().get("svix-timestamp") ?? "";
     const svix_signature = headers().get("svix-signature") ?? "";
+
+    // Test code 
+    console.log('\n ~API: ------- Đã vào web hook \n')
+
     if (!process.env.WEBHOOK_SECRET) {
         throw new Error("WEBHOOK_SECRET is not set");
     }
