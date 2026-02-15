@@ -15,15 +15,11 @@ enum ECourseStatus {
     PENDING = "PENDING",
     REJECTED = "REJECTED",
 }
-enum ECourselevel {
+enum ECourseLevel {
     BEGINNER = "BEGINNER",
     INTERMEDIATE = "INTERMEDIATE",
     ADVANCED = "ADVANCED",
 }
 
-enum ELessonType {
-    VIDEO = "VIDEO",
-    TEXT = "TEXT"
-}
 
-export { EUserStatus, EUserRole, ECourseStatus, ECourselevel, ELessonType }
+export { EUserStatus, EUserRole, ECourseStatus, ECourseLevel }

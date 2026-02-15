@@ -10,7 +10,7 @@ import { IconUsers } from "../icons";
 const Sidebar = () => {
   const { userId } = useAuth();
   return (
-    <div className="p-5 border-r border-r-gray-200 bg-white flex flex-col dark:bg-grayDarker dark:border-opacity-10">
+    <div className="fixed left-0 top-0 h-full w-[300px] p-4 border-r border-r-gray-200 bg-white flex flex-col dark:bg-grayDarker dark:border-opacity-10">
       <a href="/" className="font-bold text-3xl inline-block mb-5">
         <span className="text-primary">U</span>
         cademy
@@ -25,7 +25,7 @@ const Sidebar = () => {
           ></MenuItem>
         ))}
       </ul>
-      <div className="mt-auto flex gap-5 items-end justify-end">
+      <div className="mt-auto flex gap-5 items-center justify-end">
         <ModeToggle />
         {!userId ? (
           <Link

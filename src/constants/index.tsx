@@ -7,6 +7,7 @@ import {
   IconUsers,
 } from "@/components/icons";
 import { TMenuItem } from "@/types";
+import { ECourseLevel, ECourseStatus } from "@/types/enum";
 
 export const menuItems: TMenuItem[] = [
   {
@@ -40,3 +41,25 @@ export const menuItems: TMenuItem[] = [
     icon: <IconComment className="size-5" />,
   },
 ];
+
+export const courseStatus: { title: string, value: ECourseStatus }[] = [{
+  title: "Đã duyệt",
+  value: ECourseStatus.APPROVED
+}, {
+  title: "Chờ duyệt",
+  value: ECourseStatus.PENDING
+}, {
+  title: "Từ chối",
+  value: ECourseStatus.REJECTED
+}]
+
+export const courseLevel: { title: string, value: ECourseLevel }[] = [{
+  title: "Mới bắt đầu",
+  value: ECourseLevel.BEGINNER
+}, {
+  title: "Trung bình",
+  value: ECourseLevel.INTERMEDIATE
+}, {
+  title: "Nâng cao",
+  value: ECourseLevel.ADVANCED
+}]

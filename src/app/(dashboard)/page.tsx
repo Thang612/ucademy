@@ -1,17 +1,18 @@
 import { CourseGrid } from "@/components/common";
 import CourseItem from "@/components/course/CourseItem";
 import Heading from "@/components/typography/Heading";
-import { connectToDatabase } from "@/lib/mongoose";
+import { getAllCourses } from "@/lib/actions/course.actions";
+
 
 const page = async () => {
-
+  const courses = await getAllCourses();
   return (
     <div>
       <Heading>Khám phá</Heading>
       <CourseGrid>
-        <CourseItem></CourseItem>
-        <CourseItem></CourseItem>
-        <CourseItem></CourseItem>
+        {courses?.map((course) => (
+          <CourseItem key={course.slug} data={course}></CourseItem>
+        ))}
       </CourseGrid>
     </div>
   );

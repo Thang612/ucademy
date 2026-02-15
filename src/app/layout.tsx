@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/common/theme-provider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Ucademy",
@@ -24,6 +25,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <ToastContainer />
           </ThemeProvider>
         </body>
       </html>
