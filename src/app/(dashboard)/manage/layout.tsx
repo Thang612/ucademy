@@ -6,13 +6,13 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 const AdminLayout = async ({ children }: { children: React.ReactNode }) => {
-    // const { userId } = await auth()
-    // if (!userId) return redirect('/sign-in')
-    // const user = await getUserInfo({ userId });
-    // console.log({ user })
-    // if (!user || user.role !== EUserRole.ADMIN) {
-    //     return <PageNotFound />
-    // }
+    const { userId } = await auth()
+    if (!userId) return redirect('/sign-in')
+    const user = await getUserInfo({ userId });
+    console.log({ user })
+    if (!user || user.role !== EUserRole.ADMIN) {
+        return <PageNotFound />
+    }
     return (
         <div>{children}</div>
     )

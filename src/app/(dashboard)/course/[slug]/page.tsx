@@ -1,6 +1,7 @@
 import PageNotFound from "@/app/not-found";
 import { IconPlay, IconStudy, IconUsers } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { levelDisplay } from "@/constants";
 import { getCourseBySlug } from "@/lib/actions/course.actions";
 import Image from "next/image";
 
@@ -25,8 +26,8 @@ const page = async ({ params }: { params: { slug: string } }) => {
                 <BoxSection title="Thông tin">
                     <div className="grid grid-cols-4 gap-5 mb-10">
                         <BoxInfo title="Bài học">100</BoxInfo>
-                        <BoxInfo title="Lượt xem">100</BoxInfo>
-                        <BoxInfo title="Trình độ">100</BoxInfo>
+                        <BoxInfo title="Lượt xem">{data.views}</BoxInfo>
+                        <BoxInfo title="Trình độ">{levelDisplay[data.level]}</BoxInfo>
                         <BoxInfo title="Thời lượng">100</BoxInfo>
                     </div>
                 </BoxSection>

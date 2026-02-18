@@ -10,12 +10,12 @@ import { IconUsers } from "../icons";
 const Sidebar = () => {
   const { userId } = useAuth();
   return (
-    <div className="fixed left-0 top-0 h-full w-[300px] p-4 border-r border-r-gray-200 bg-white flex flex-col dark:bg-grayDarker dark:border-opacity-10">
-      <a href="/" className="font-bold text-3xl inline-block mb-5">
+    <div className="flex-row flex lg:flex-col w-full lg:w-[300px] fixed left-0 bottom-0 lg:top-0 lg:h-full  p-4 border-r border-r-gray-200 bg-white  dark:bg-grayDarker dark:border-opacity-10">
+      <a href="/" className="hidden lg:inline-block font-bold text-3xl  mb-5">
         <span className="text-primary">U</span>
         cademy
       </a>
-      <ul className="flex flex-col gap-2">
+      <ul className="flex-row flex lg:flex-col gap-2">
         {menuItems.map((item, index) => (
           <MenuItem
             key={index}
@@ -25,7 +25,7 @@ const Sidebar = () => {
           ></MenuItem>
         ))}
       </ul>
-      <div className="mt-auto flex gap-5 items-center justify-end">
+      <div className="flex-row-reverse lg:flex-row mt-auto flex gap-5 items-center justify-end">
         <ModeToggle />
         {!userId ? (
           <Link
@@ -47,7 +47,7 @@ function MenuItem({ url = "/", title = "", icon }: TMenuItem) {
     <li>
       <ActiveLink url={url}>
         {icon}
-        {title}
+        <span className="hidden lg:inline ">{title}</span>
       </ActiveLink>
     </li>
   );
