@@ -100,7 +100,7 @@ const CourseManange = ({ courses }: { courses: ICourse[] }) => {
                             >{statusDisplay[course.status]}</span></TableCell>
                             <TableCell >
                                 <div className="flex gap-3 justify-center items-center">
-                                    <Link href={`/study/${course.slug}`} className={cn(commonClass.buttonIcon)}>
+                                    <Link href={`/manage/course/update-content?slug=${course.slug}`} className={cn(commonClass.buttonIcon)}>
                                         <IconStudy className="size-4" />
                                     </Link>
                                     <Link href={`/manage/course/update?slug=${course.slug}`} className={cn(commonClass.buttonIcon)}>

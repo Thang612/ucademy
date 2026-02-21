@@ -4,20 +4,31 @@ import { Button } from "@/components/ui/button";
 import { levelDisplay } from "@/constants";
 import { getCourseBySlug } from "@/lib/actions/course.actions";
 import Image from "next/image";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
+import { ILecture } from "@/database/lecture.model";
 
 const page = async ({ params }: { params: { slug: string } }) => {
     const data = await getCourseBySlug({ slug: params.slug, });
     if (!data) return <PageNotFound></PageNotFound>;
+    const lectures = data.lectures || [];
     return (
         <div className="grid lg:grid-cols-[2fr,1fr] gap-10 min-h-screen">
             <div>
                 <div className="relative aspect-video mb-5">
-                    <Image
-                        src="https://images.unsplash.com/photo-1716881763995-097b7a68ea3d?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt=""
+                    {data.intro_url ? (
+                        <iframe
+                            src={data.intro_url} />) : <Image
+                        src={data.image || "https://via.placeholder.com/300x200?text=No+Image"}
+                        alt={data.title}
                         fill
                         className="w-full h-full object-cover rounded-lg"
-                    />
+                    />}
+
                 </div>
                 <h1 className="font-bold text-3xl mb-5">{data?.title}</h1>
                 <BoxSection title="Mô tả">
@@ -29,6 +40,24 @@ const page = async ({ params }: { params: { slug: string } }) => {
                         <BoxInfo title="Lượt xem">{data.views}</BoxInfo>
                         <BoxInfo title="Trình độ">{levelDisplay[data.level]}</BoxInfo>
                         <BoxInfo title="Thời lượng">100</BoxInfo>
+                    </div>
+                </BoxSection>
+                <BoxSection title="Chi tiết khóa học">
+                    <div className="flex flex-col gap-4 mb-6">
+                        {lectures.map((lecture: ILecture) => (
+                            <Accordion type="single" collapsible defaultValue={lecture._id.toString()} key={lecture._id.toString()}>
+                                <AccordionItem value="item-1">
+                                    <AccordionTrigger className="bg-white dark:bg-grayDarker px-5 py-4 border border-slate-100 dark:border-slate-700 rounded-md ">
+                                        <div className="flex justify-between gap-4 w-full mr-2 items-center">
+                                            <div className="w-full">{lecture.title}</div>
+                                        </div>
+                                    </AccordionTrigger>
+                                    <AccordionContent className="mt-2 bg-white dark:bg-grayDarker px-5 py-4 border border-t-0 border-slate-100 dark:border-slate-700 rounded-md">
+                                        Yes. It adheres to the WAI-ARIA design pattern.
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
+                        ))}
                     </div>
                 </BoxSection>
                 <BoxSection title="Yêu cầu">
@@ -44,8 +73,14 @@ const page = async ({ params }: { params: { slug: string } }) => {
                 <BoxSection title="Q.A">
                     {data.info.qa.map((qa, index) => (
                         <div key={index}>
-                            <div>{qa.question}</div>
-                            <div>{qa.answer}</div>
+                            <Accordion type="single" collapsible defaultValue={`item-${index}`}>
+                                <AccordionItem value="item-1">
+                                    <AccordionTrigger className="bg-white dark:bg-grayDarker px-5 py-4 border border-slate-100 dark:border-slate-700 rounded-md">{qa.question}</AccordionTrigger>
+                                    <AccordionContent className="mt-2 bg-white dark:bg-grayDarker px-5 py-4 border border-t-0 border-slate-100 dark:border-slate-700 rounded-md">
+                                        {qa.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
                         </div>
                     ))}
                 </BoxSection>

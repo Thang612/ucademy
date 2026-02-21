@@ -4,6 +4,8 @@ enum EUserStatus {
     BANNED = "BANNED"
 }
 
+
+
 enum EUserRole {
     ADMIN = "ADMIN",
     USER = "USER",
@@ -21,5 +23,9 @@ enum ECourseLevel {
     ADVANCED = "ADVANCED",
 }
 
+enum ELessonType {
+    VIDEO = "VIDEO",
+    ARTICLE = "ARTICLE",
+}
 
-export { EUserStatus, EUserRole, ECourseStatus, ECourseLevel }
+export { EUserStatus, EUserRole, ECourseStatus, ECourseLevel, ELessonType }

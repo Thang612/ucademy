@@ -10,7 +10,7 @@ import { IconUsers } from "../icons";
 const Sidebar = () => {
   const { userId } = useAuth();
   return (
-    <div className="flex-row flex lg:flex-col w-full lg:w-[300px] fixed left-0 bottom-0 lg:top-0 lg:h-full  p-4 border-r border-r-gray-200 bg-white  dark:bg-grayDarker dark:border-opacity-10">
+    <div className=" flex-row flex lg:flex-col w-full lg:w-[300px] fixed left-0 bottom-0 lg:top-0 lg:h-full  p-4 border-r border-r-gray-200 bg-white  dark:bg-grayDarker dark:border-opacity-10">
       <a href="/" className="hidden lg:inline-block font-bold text-3xl  mb-5">
         <span className="text-primary">U</span>
         cademy
@@ -25,7 +25,7 @@ const Sidebar = () => {
           ></MenuItem>
         ))}
       </ul>
-      <div className="flex-row-reverse lg:flex-row mt-auto flex gap-5 items-center justify-end">
+      <div className="flex-row mt-auto flex gap-5 items-center justify-end">
         <ModeToggle />
         {!userId ? (
           <Link
